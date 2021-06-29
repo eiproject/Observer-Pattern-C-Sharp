@@ -20,7 +20,7 @@ namespace SeaLevelBroadcast {
 
       // do the loop
       while (isLoop) {
-        
+        Console.WriteLine("------------------------ NEW LOOP ---------------------------");
         Random randomData = new Random(); // reset random number each loop
         SensorData sensor = new SensorData(randomData); // read sensor data here
 
@@ -40,9 +40,7 @@ namespace SeaLevelBroadcast {
           Console.WriteLine("Thanks for using Sea Level Monitor!");
           isLoop = false;
         }
-
         Console.WriteLine($"Sea Level Data: { refSeaLevelData.SeaDepth }, { refSeaLevelData.SeaSalinity }, { refSeaLevelData.SeaTemperature }");
-        Console.WriteLine("------------------------------------------------");
       }
     }
     class Program {
