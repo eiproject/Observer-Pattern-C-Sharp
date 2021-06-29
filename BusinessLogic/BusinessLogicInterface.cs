@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SeaLevelBroadcast.Models;
 using SeaLevelBroadcast.SensorDevice;
+using SeaLevelBroadcast.Models;
 
 namespace SeaLevelBroadcast.BusinessLogic {
-  interface IObserver {
-  public string GetDataFromObject();
+  interface IBusinessLogic {
+    void update(SensorData sensor, SeaLevel dataRef);
   }
 }

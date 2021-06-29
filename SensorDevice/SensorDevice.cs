@@ -11,6 +11,8 @@ namespace SeaLevelBroadcast.SensorDevice {
       salinitySensor = sensorData.Next(70, 90);
       depthSensor = sensorData.Next(10, 20);
       tempSensor = sensorData.Next(30, 40);
+
+      Console.WriteLine($"Sensor data read : { depthSensor } { salinitySensor } { tempSensor }");
     }
   }
 }

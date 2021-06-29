@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SeaLevelBroadcast.SensorDevice;
 
 namespace SeaLevelBroadcast.Models {
   class SeaLevel {
-    // private get set
-    private int seaDepth;
-    private int seaSalinity;
-    private int surfaceTemperature;
+    // internal get set
+    internal int? seaDepth;
+    internal int? seaSalinity;
+    internal int? surfaceTemperature;
 
-    // internal attribute
-    internal int SeaDepth{ get{return seaDepth;} }
-    internal int SeaSalinity{ get{return seaSalinity;} }
-    internal int SeaTemperature{ get{return surfaceTemperature;} }
+    // public get only attribute
+    public int? SeaDepth{ get{return seaDepth;} }
+    public int? SeaSalinity{ get{return seaSalinity;} }
+    public int? SeaTemperature{ get{return surfaceTemperature;} }
 
-    internal SeaLevel(int depth, int salinity, int temp) {
-      seaDepth = depth;
-      seaSalinity = salinity;
-      surfaceTemperature = temp;
+    /*internal void UpdateSeaLevel(SensorData sensor) {
+      seaDepth = sensor.depthSensor;
+      seaSalinity = sensor.salinitySensor;
+      surfaceTemperature = sensor.tempSensor;
+    }*/
+
+    internal SeaLevel() {
+
     }
   }
 }

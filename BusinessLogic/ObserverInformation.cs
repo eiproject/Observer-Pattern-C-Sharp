@@ -4,6 +4,8 @@ using System.Text;
 
 namespace SeaLevelBroadcast.BusinessLogic {
   class ObserverInformation {
+    ObserverInformation() {
 
+    }
   }
 }
