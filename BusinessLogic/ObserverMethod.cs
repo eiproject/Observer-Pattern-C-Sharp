@@ -50,7 +50,6 @@ namespace SeaLevelBroadcast.BusinessLogic {
         $"{ obj.SeaSalinity }, 'sea_temperature': " +
         $"{ obj.SeaTemperature }" + "}";
       Console.WriteLine(_jsonData);
-
       //return _jsonData;
     }
   }
