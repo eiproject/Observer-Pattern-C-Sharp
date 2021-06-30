@@ -6,8 +6,6 @@ using SeaLevelBroadcast.BusinessLogic;
 
 namespace SeaLevelBroadcast {
   class Run {
-    IObserver interfaceObserver = new ConditionControl();
-    ISubject interfaceSubject = new ObserverMethod();
     enum userMenuInput {
       Continue = 1,
       Update,
@@ -16,20 +14,23 @@ namespace SeaLevelBroadcast {
     }
     bool isLoop = true;
     internal Run() {
+      IObserver interfaceObserver = new ConditionControl();
+      ISubject interfaceSubject = new ObserverMethod();
+
       ObserversDatabase allObservers = new ObserversDatabase(); // create Observer database
       SeaLevel sealLevelData = new SeaLevel();
-      ISubject subjInterface = new ObserverMethod();
+      /*ISubject subjInterface = new ObserverMethod();*/
 
       // creating observer
-      Observer A = new Observer { id = 0, username = "monitoring_a", function="weather monitoring" };
-      Observer B = new Observer { id = 1, username = "tsunami_b", function="tsunami early warning system" };
-      Observer C = new Observer { id = 2, username = "salt_control_c", function="salt harvesting" };
-      Observer D = new Observer { id = 3, username = "another_man_c", function = "another display" };
+      Observer A = new Observer() { id = 0, username = "monitoring_a", function="weather monitoring" };
+      Observer B = new Observer() { id = 1, username = "tsunami_b", function="tsunami early warning system" };
+      Observer C = new Observer() { id = 2, username = "salt_control_c", function="salt harvesting" };
+      Observer D = new Observer() { id = 3, username = "another_man_c", function = "another display" };
 
-      subjInterface.addObserver(allObservers, A);
-      subjInterface.addObserver(allObservers, B);
-      subjInterface.addObserver(allObservers, C);
-
+      interfaceSubject.addObserver(allObservers, A);
+      interfaceSubject.addObserver(allObservers, B);
+      interfaceSubject.addObserver(allObservers, C);
+      interfaceSubject.addObserver(allObservers, D);
 
       // do the loop
       while (isLoop) {
@@ -55,11 +56,14 @@ namespace SeaLevelBroadcast {
         else {
           Console.WriteLine("Thanks for using Sea Level Monitor!");
           isLoop = false;
+          continue;
         }
         Console.WriteLine("----------ALL OBSERVER DATA-----------");
-        for (int i = 0; allObservers.AllObservers.Count < i; i++) {
-          Console.Write(allObservers.AllObservers[i].Username);
-          interfaceSubject.previewData(allObservers.AllObservers[i].seaLevelData);
+        for (int i = 0; i < allObservers.AllObservers.Count; i++) {
+          Console.WriteLine("username: " + allObservers.AllObservers[i].Username);
+          if (allObservers.AllObservers[i].seaLevelData != null) {
+            interfaceSubject.previewData(allObservers.AllObservers[i].seaLevelData);
+          }
         }
         Console.ReadKey();
       }

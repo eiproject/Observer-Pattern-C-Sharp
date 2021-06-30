@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SeaLevelBroadcast.Models {
   class ObserversDatabase {
-    internal List<Observer> AllObservers;
+    internal List<Observer> AllObservers = new List<Observer>();
     internal ObserversDatabase() {
 
     }
