@@ -1,0 +1,13 @@
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\bin\Debug\netcoreapp3.1\SeaLevelBroadcast.exe
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\bin\Debug\netcoreapp3.1\SeaLevelBroadcast.deps.json
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\bin\Debug\netcoreapp3.1\SeaLevelBroadcast.runtimeconfig.json
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\bin\Debug\netcoreapp3.1\SeaLevelBroadcast.runtimeconfig.dev.json
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\bin\Debug\netcoreapp3.1\SeaLevelBroadcast.dll
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\bin\Debug\netcoreapp3.1\SeaLevelBroadcast.pdb
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\obj\Debug\netcoreapp3.1\SeaLevelBroadcast.csproj.AssemblyReference.cache
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\obj\Debug\netcoreapp3.1\SeaLevelBroadcast.AssemblyInfoInputs.cache
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\obj\Debug\netcoreapp3.1\SeaLevelBroadcast.AssemblyInfo.cs
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\obj\Debug\netcoreapp3.1\SeaLevelBroadcast.csproj.CoreCompileInputs.cache
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\obj\Debug\netcoreapp3.1\SeaLevelBroadcast.dll
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\obj\Debug\netcoreapp3.1\SeaLevelBroadcast.pdb
+C:\Lab Formulatrix\DesignPattern1\ObserverPattern\obj\Debug\netcoreapp3.1\SeaLevelBroadcast.genruntimeconfig.cache

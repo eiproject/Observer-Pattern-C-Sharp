@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nY46uTe9XOKBFMf2ZGcE/0rMH5cP3ly+0UzR+e4Yee5dfSe3NFOgbEfaL8aUn2OxXrFUE6gyFvt2yEabm6+hzA==",
+  "dgSpecHash": "ORjlsTyEjM5KsLnykmp8+UIEPwC40ljTNQnGb8EpSlM0qeREIUKrUWyImOk2YAgWr52YOXzXZnlUGvrBJNjBEw==",
   "success": true,
-  "projectFilePath": "C:\\Lab Formulatrix\\DesignPattern1\\ObserverPattern\\NewsBroadcast.csproj",
+  "projectFilePath": "C:\\Lab Formulatrix\\DesignPattern1\\ObserverPattern\\SeaLevelBroadcast.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

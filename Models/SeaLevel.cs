@@ -8,21 +8,20 @@ namespace SeaLevelBroadcast.Models {
     // internal get set
     internal int? seaDepth;
     internal int? seaSalinity;
-    internal int? surfaceTemperature;
+    internal int? seaTemperature;
 
     // public get only attribute
     public int? SeaDepth{ get{return seaDepth;} }
     public int? SeaSalinity{ get{return seaSalinity;} }
-    public int? SeaTemperature{ get{return surfaceTemperature;} }
-
-    /*internal void UpdateSeaLevel(SensorData sensor) {
-      seaDepth = sensor.depthSensor;
-      seaSalinity = sensor.salinitySensor;
-      surfaceTemperature = sensor.tempSensor;
-    }*/
+    public int? SeaTemperature{ get{return seaTemperature;} }
 
     internal SeaLevel() {
+    }
 
+    internal void update(SensorData sensor) {
+      seaDepth = sensor.depthSensor;
+      seaSalinity = sensor.salinitySensor;
+      seaTemperature = sensor.tempSensor;
     }
   }
 }

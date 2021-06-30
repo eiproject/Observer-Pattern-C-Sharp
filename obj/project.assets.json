@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Lab Formulatrix\\DesignPattern1\\ObserverPattern\\NewsBroadcast.csproj",
-      "projectName": "NewsBroadcast",
-      "projectPath": "C:\\Lab Formulatrix\\DesignPattern1\\ObserverPattern\\NewsBroadcast.csproj",
+      "projectUniqueName": "C:\\Lab Formulatrix\\DesignPattern1\\ObserverPattern\\SeaLevelBroadcast.csproj",
+      "projectName": "SeaLevelBroadcast",
+      "projectPath": "C:\\Lab Formulatrix\\DesignPattern1\\ObserverPattern\\SeaLevelBroadcast.csproj",
       "packagesPath": "C:\\Users\\kosma\\.nuget\\packages\\",
       "outputPath": "C:\\Lab Formulatrix\\DesignPattern1\\ObserverPattern\\obj\\",
       "projectStyle": "PackageReference",
