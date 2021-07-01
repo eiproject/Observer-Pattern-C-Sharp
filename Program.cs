@@ -14,11 +14,11 @@ namespace SeaLevelBroadcast {
     }
     bool isLoop = true;
     internal Run() {
-      IObserver interfaceObserver = new ConditionControl();
-      ISubject interfaceSubject = new ObserverMethod();
-
       ObserversDatabase allObservers = new ObserversDatabase(); // create Observer database
-      SeaLevel sealLevelData = new SeaLevel();
+      
+      IObserver interfaceObserver = new ConditionControl(allObservers);
+      ISubject interfaceSubject = new ObserverMethod(allObservers);
+
       /*ISubject subjInterface = new ObserverMethod();*/
 
       // creating observer
@@ -27,16 +27,17 @@ namespace SeaLevelBroadcast {
       Observer C = new Observer() { id = 2, username = "salt_control_c", function="salt harvesting" };
       Observer D = new Observer() { id = 3, username = "another_man_c", function = "another display" };
 
-      interfaceSubject.addObserver(allObservers, A);
-      interfaceSubject.addObserver(allObservers, B);
-      interfaceSubject.addObserver(allObservers, C);
-      interfaceSubject.addObserver(allObservers, D);
+      interfaceSubject.addObserver(A);
+      interfaceSubject.addObserver(B);
+      interfaceSubject.addObserver(C);
+      interfaceSubject.addObserver(D);
 
       // do the loop
       while (isLoop) {
         Console.WriteLine("------------------------ NEW LOOP ---------------------------");
         Random randomData = new Random(); // reset random number each loop
         SensorData sensor = new SensorData(randomData); // read sensor data here
+        SeaLevel sealLevelData = new SeaLevel();
         sealLevelData.update(sensor);
 
         CLIMenuInput user = new CLIMenuInput(); // pause to user input 
@@ -45,20 +46,21 @@ namespace SeaLevelBroadcast {
           // do nothing
         }
         else if (user.userInput == (int)userMenuInput.Update) {
-          interfaceObserver.update(allObservers, sealLevelData);
+          interfaceObserver.update(sealLevelData);
         }
         else if (user.userInput == (int)userMenuInput.AddObserver) {
-          interfaceSubject.addObserver(allObservers);
+          interfaceSubject.addObserver();
         }
         else if (user.userInput == (int)userMenuInput.DelObserver) {
-          interfaceSubject.deleteObserver(allObservers);
+          interfaceSubject.deleteObserver();
         }
         else {
           Console.WriteLine("Thanks for using Sea Level Monitor!");
           isLoop = false;
           continue;
         }
-        Console.WriteLine("----------ALL OBSERVER DATA-----------");
+        
+        Console.WriteLine("---------------------ALL OBSERVER DATA-----------------------");
         for (int i = 0; i < allObservers.AllObservers.Count; i++) {
           Console.WriteLine("username: " + allObservers.AllObservers[i].Username);
           if (allObservers.AllObservers[i].seaLevelData != null) {

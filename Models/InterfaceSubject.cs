@@ -4,10 +4,10 @@ using System.Text;
 
 namespace SeaLevelBroadcast.Models {
   interface ISubject {
-    void addObserver(ObserversDatabase database, Observer newObserver);
-    void addObserver(ObserversDatabase database);
-    void deleteObserver(ObserversDatabase database, Observer del);
-    void deleteObserver(ObserversDatabase database);
+    void addObserver(Observer newObserver);
+    void addObserver();
+    void deleteObserver(Observer del);
+    void deleteObserver();
     void previewData(SeaLevel s);
   }
 }

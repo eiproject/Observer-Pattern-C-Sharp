@@ -3,16 +3,17 @@ using SeaLevelBroadcast.Models;
 
 namespace SeaLevelBroadcast.BusinessLogic {
   class ObserverMethod : ISubject{
-    /*SeaLevel currentObj;*/
-    internal ObserverMethod() {
+    ObserversDatabase database;
+    internal ObserverMethod(ObserversDatabase d) {
       /*currentObj = obj;*/
+      database = d;
     }
 
-    void ISubject.addObserver(ObserversDatabase database, Observer newObserver) {
+    void ISubject.addObserver(Observer newObserver) {
       database.AllObservers.Add(newObserver);
     }
 
-    void ISubject.addObserver(ObserversDatabase database) {
+    void ISubject.addObserver() {
       Console.WriteLine("input username: ");
       string username = Console.ReadLine();
       Console.WriteLine("input function: ");
@@ -27,13 +28,13 @@ namespace SeaLevelBroadcast.BusinessLogic {
       database.AllObservers.Add(newObs);
     }
 
-    void ISubject.deleteObserver(ObserversDatabase database, Observer del) {
+    void ISubject.deleteObserver(Observer del) {
       int? target = database.AllObservers.IndexOf(del);
       if (target != null || target >= 0) {
         database.AllObservers.Remove(del);
       }
     }
-    void ISubject.deleteObserver(ObserversDatabase database) {
+    void ISubject.deleteObserver() {
       Console.WriteLine("input username: ");
       string username = Console.ReadLine();
 

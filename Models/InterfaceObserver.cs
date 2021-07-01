@@ -4,6 +4,6 @@ using System.Text;
 
 namespace SeaLevelBroadcast.Models {
   interface IObserver {
-    void update(ObserversDatabase d, SeaLevel s);
+    void update(SeaLevel s);
   }
 }

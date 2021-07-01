@@ -5,8 +5,12 @@ using SeaLevelBroadcast.Models;
 using SeaLevelBroadcast.SensorDevice;
 
 namespace SeaLevelBroadcast.BusinessLogic {
-  class ConditionControl : IObserver{
-    void IObserver.update(ObserversDatabase database, SeaLevel seaLevelData) {
+  class ConditionControl : IObserver {
+    ObserversDatabase database;
+    internal ConditionControl(ObserversDatabase d) {
+      database = d;
+    }
+    void IObserver.update(SeaLevel seaLevelData) {
       for (int i = 0; i < database.AllObservers.Count; i++) {
         database.AllObservers[i].updateData(seaLevelData);
       }
