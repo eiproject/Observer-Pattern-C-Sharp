@@ -61,5 +61,15 @@ namespace SeaLevelBroadcast.BusinessLogic {
       Console.WriteLine(_jsonData);
       //return _jsonData;
     }
+
+    string ISubject.jsonData(SeaLevel obj) {
+      string _jsonData =
+        "{'sea_depth': " +
+        $"{ obj.SeaDepth }, 'sea_salinity': " +
+        $"{ obj.SeaSalinity }, 'sea_temperature': " +
+        $"{ obj.SeaTemperature }" + "}";
+      Console.WriteLine(_jsonData);
+      return _jsonData;
+    }
   }
 }

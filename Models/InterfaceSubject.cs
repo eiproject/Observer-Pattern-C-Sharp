@@ -9,5 +9,6 @@ namespace SeaLevelBroadcast.Models {
     void deleteObserver(Observer del);
     void deleteObserver();
     void previewData(SeaLevel s);
+    string jsonData(SeaLevel s);
   }
 }

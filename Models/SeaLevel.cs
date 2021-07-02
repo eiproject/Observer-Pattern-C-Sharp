@@ -4,7 +4,7 @@ using System.Text;
 using SeaLevelBroadcast.SensorDevice;
 
 namespace SeaLevelBroadcast.Models {
-  class SeaLevel {
+  public class SeaLevel {
     // internal get set
     internal int? seaDepth;
     internal int? seaSalinity;

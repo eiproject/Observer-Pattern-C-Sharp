@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace SeaLevelBroadcast.Models {
-  class ObserversDatabase {
+  public class ObserversDatabase {
     // private data
     private event UpdateObserver _allObserversEvent;
     private List<IObserver> _allObservers = new List<IObserver>();
@@ -19,7 +19,7 @@ namespace SeaLevelBroadcast.Models {
         Console.WriteLine("Subscriber gone :(");
       }
     }
-    internal List<IObserver> AllObservers { get { return _allObservers; } }
+    public List<IObserver> AllObservers { get { return _allObservers; } }
 
     // internal method
     internal int? NumSubscriber {

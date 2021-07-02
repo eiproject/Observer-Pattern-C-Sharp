@@ -25,6 +25,7 @@ namespace SeaLevelBroadcast.Models {
     }
 
     internal int ID { get { return _id; } }
+    internal string Function { get { return _function; } }
     string IObserver.Username { get { return _username; } }
     SeaLevel IObserver.SeaLevelData { get { return _seaLevelData; } }
 
