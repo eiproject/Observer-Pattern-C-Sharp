@@ -18,7 +18,7 @@ namespace SeaLevelBroadcast.Models {
     internal SeaLevel() {
     }
 
-    internal void update(SensorData sensor) {
+    internal void updateDataFromSensor(SensorData sensor) {
       seaDepth = sensor.depthSensor;
       seaSalinity = sensor.salinitySensor;
       seaTemperature = sensor.tempSensor;

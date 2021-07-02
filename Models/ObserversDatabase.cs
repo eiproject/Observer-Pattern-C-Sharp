@@ -4,7 +4,36 @@ using System.Text;
 
 namespace SeaLevelBroadcast.Models {
   class ObserversDatabase {
-    internal List<Observer> AllObservers = new List<Observer>();
+    // private data
+    private event UpdateObserver _allObserversEvent;
+    private List<IObserver> _allObservers = new List<IObserver>();
+
+    // internal modifier 
+    internal event UpdateObserver AllObserversEvent {
+      add {
+        _allObserversEvent += value;
+        Console.WriteLine("New Subscriber!");
+      }
+      remove { 
+        _allObserversEvent -= value;
+        Console.WriteLine("Subscriber gone :(");
+      }
+    }
+    internal List<IObserver> AllObservers { get { return _allObservers; } }
+
+    // internal method
+    internal int? NumSubscriber {
+      get {
+        return _allObserversEvent?.GetInvocationList().Length;
+      }
+    }
+    internal void AddObserverToDatabase(IObserver o) {
+      _allObservers.Add(o);
+    }
+    internal void Broadcast(SeaLevel s) {
+      _allObserversEvent.Invoke(s);
+    }
+    // constructor
     internal ObserversDatabase() {
 
     }

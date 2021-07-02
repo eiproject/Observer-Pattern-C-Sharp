@@ -3,24 +3,39 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace SeaLevelBroadcast.Models {
-  class Observer {
-    internal int id;
-    internal string username;
-    internal string function;
-/*    internal int? seaDepth;
-    internal int? seaSalinity;
-    internal int? seaTemperature;*/
-    internal SeaLevel seaLevelData;
-
-
-    internal void updateData(SeaLevel newSeaLevel) {
-/*      seaDepth = newSeaLevel.seaDepth;
-      seaSalinity = newSeaLevel.seaSalinity;
-      seaTemperature = newSeaLevel.seaTemperature;*/
-      seaLevelData = newSeaLevel;
+  class Observer : IObserver {
+    ObserversDatabase database;
+    event UpdateObserver IObserver.ObserverEvent {
+      add {
+        database.AllObserversEvent += value;
+      }
+      remove {
+        database.AllObserversEvent -= value;
+      }
     }
 
-    public int ID { get { return id; } }
-    public string Username { get { return username; } }
+    private int _id;
+    private string _username;
+    private string _function;
+    private SeaLevel _seaLevelData;
+
+
+    void IObserver.UpdateData(SeaLevel newSeaLevel) {
+      _seaLevelData = newSeaLevel;
+    }
+
+    internal int ID { get { return _id; } }
+    string IObserver.Username { get { return _username; } }
+    SeaLevel IObserver.SeaLevelData { get { return _seaLevelData; } }
+
+    void IObserver.InputObserverData(int id, string username, string function) {
+      _id = id;
+      _username = username;
+      _function = function;
+    }
+
+    internal Observer(ObserversDatabase all) {
+      database = all;
+    }
   }
 }

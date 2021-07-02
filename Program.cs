@@ -5,6 +5,7 @@ using SeaLevelBroadcast.Models;
 using SeaLevelBroadcast.BusinessLogic;
 
 namespace SeaLevelBroadcast {
+  internal delegate void UpdateObserver(SeaLevel newSeaLevelData);
   class Run {
     enum userMenuInput {
       Continue = 1,
@@ -16,21 +17,29 @@ namespace SeaLevelBroadcast {
     internal Run() {
       ObserversDatabase allObservers = new ObserversDatabase(); // create Observer database
       
-      IObserver interfaceObserver = new ConditionControl(allObservers);
+      // IObserver interfaceObserver = new Observer(allObservers);
       ISubject interfaceSubject = new ObserverMethod(allObservers);
 
       /*ISubject subjInterface = new ObserverMethod();*/
 
       // creating observer
-      Observer A = new Observer() { id = 0, username = "monitoring_a", function="weather monitoring" };
-      Observer B = new Observer() { id = 1, username = "tsunami_b", function="tsunami early warning system" };
-      Observer C = new Observer() { id = 2, username = "salt_control_c", function="salt harvesting" };
-      Observer D = new Observer() { id = 3, username = "another_man_c", function = "another display" };
+      IObserver A = new Observer(allObservers); 
+      A.InputObserverData(0, "monitoring_a", "weather monitoring" );
+      IObserver B = new Observer(allObservers);
+      B.InputObserverData(1, "tsunami_b", "tsunami early warning system");
+      IObserver C = new Observer(allObservers);
+      C.InputObserverData(2, "salt_control_c", "salt harvesting" );
+      IObserver D = new Observer(allObservers); 
+      D.InputObserverData(3, "another_man_c", "another display");
 
-      interfaceSubject.addObserver(A);
-      interfaceSubject.addObserver(B);
-      interfaceSubject.addObserver(C);
-      interfaceSubject.addObserver(D);
+      allObservers.AllObserversEvent += A.UpdateData;
+      allObservers.AllObserversEvent += B.UpdateData;
+      allObservers.AllObserversEvent += C.UpdateData;
+      allObservers.AllObserversEvent += D.UpdateData;
+      allObservers.AddObserverToDatabase(A);
+      allObservers.AddObserverToDatabase(B);
+      allObservers.AddObserverToDatabase(C);
+      allObservers.AddObserverToDatabase(D);
 
       // do the loop
       while (isLoop) {
@@ -38,7 +47,7 @@ namespace SeaLevelBroadcast {
         Random randomData = new Random(); // reset random number each loop
         SensorData sensor = new SensorData(randomData); // read sensor data here
         SeaLevel sealLevelData = new SeaLevel();
-        sealLevelData.update(sensor);
+        sealLevelData.updateDataFromSensor(sensor);
 
         CLIMenuInput user = new CLIMenuInput(); // pause to user input 
 
@@ -46,7 +55,7 @@ namespace SeaLevelBroadcast {
           // do nothing
         }
         else if (user.userInput == (int)userMenuInput.Update) {
-          interfaceObserver.update(sealLevelData);
+          allObservers.Broadcast(sealLevelData);
         }
         else if (user.userInput == (int)userMenuInput.AddObserver) {
           interfaceSubject.addObserver();
@@ -60,11 +69,11 @@ namespace SeaLevelBroadcast {
           continue;
         }
         
-        Console.WriteLine("---------------------ALL OBSERVER DATA-----------------------");
-        for (int i = 0; i < allObservers.AllObservers.Count; i++) {
+        Console.WriteLine("---------------------ALL OBSERVER DATA-----------------------" + allObservers.NumSubscriber);
+        for (int i = 0; i < allObservers.NumSubscriber; i++) {
           Console.WriteLine("username: " + allObservers.AllObservers[i].Username);
-          if (allObservers.AllObservers[i].seaLevelData != null) {
-            interfaceSubject.previewData(allObservers.AllObservers[i].seaLevelData);
+          if (allObservers.AllObservers[i].SeaLevelData != null) {
+            interfaceSubject.previewData(allObservers.AllObservers[i].SeaLevelData);
           }
         }
         Console.ReadKey();
