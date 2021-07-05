@@ -4,21 +4,19 @@ using System.Text;
 
 namespace SeaLevelBroadcast.Models {
   class Observer : IObserver {
-    ObserversDatabase database;
     event UpdateObserver IObserver.ObserverEvent {
       add {
-        database.AllObserversEvent += value;
+        _database.AllObserversEvent += value;
       }
       remove {
-        database.AllObserversEvent -= value;
+        _database.AllObserversEvent -= value;
       }
     }
-
+    private ObserversDatabase _database;
     private int _id;
     private string _username;
     private string _function;
     private SeaLevel _seaLevelData;
-
 
     void IObserver.UpdateData(SeaLevel newSeaLevel) {
       _seaLevelData = newSeaLevel;
@@ -36,7 +34,7 @@ namespace SeaLevelBroadcast.Models {
     }
 
     internal Observer(ObserversDatabase all) {
-      database = all;
+      _database = all;
     }
   }
 }

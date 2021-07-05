@@ -3,16 +3,16 @@ using SeaLevelBroadcast.Models;
 
 namespace SeaLevelBroadcast.BusinessLogic {
   class ObserverMethod : ISubject {
-    ObserversDatabase database;
+    private ObserversDatabase _database;
     internal ObserverMethod(ObserversDatabase d) {
       /*currentObj = obj;*/
-      database = d;
+      _database = d;
     }
 
     void ISubject.addObserver(Observer newObserver) {
       IObserver newO = newObserver;
-      database.AllObservers.Add(newObserver);
-      database.AllObserversEvent += newO.UpdateData;
+      _database.AllObservers.Add(newObserver);
+      _database.AllObserversEvent += newO.UpdateData;
     }
 
     void ISubject.addObserver() {
@@ -21,34 +21,28 @@ namespace SeaLevelBroadcast.BusinessLogic {
       Console.WriteLine("input function: ");
       string function = Console.ReadLine();
 
-      /*      Observer newObs = new Observer {
-              id = database.AllObservers.Count,
-              username = username,
-              function = function
-            };
-      */
-      IObserver newObs = new Observer(database);
-      newObs.InputObserverData(database.AllObservers.Count, username, function);
-      database.AllObserversEvent += newObs.UpdateData;
-      database.AllObservers.Add(newObs);
+      IObserver newObs = new Observer(_database);
+      newObs.InputObserverData(_database.AllObservers.Count, username, function);
+      _database.AllObserversEvent += newObs.UpdateData;
+      _database.AllObservers.Add(newObs);
     }
 
     void ISubject.deleteObserver(Observer del) {
       IObserver del2 = del;
-      int? target = database.AllObservers.IndexOf(del2);
+      int? target = _database.AllObservers.IndexOf(del2);
       if (target != null || target >= 0) {
-        database.AllObservers.Remove(del);
-        database.AllObserversEvent += del2.UpdateData;
+        _database.AllObservers.Remove(del);
+        _database.AllObserversEvent += del2.UpdateData;
       }
     }
     void ISubject.deleteObserver() {
       Console.WriteLine("input username: ");
       string username = Console.ReadLine();
 
-      IObserver target = database.AllObservers.Find(data => data.Username == username);
+      IObserver target = _database.AllObservers.Find(data => data.Username == username);
       if (target != null) {
-        database.AllObservers.Remove(target);
-        database.AllObserversEvent -= target.UpdateData;
+        _database.AllObservers.Remove(target);
+        _database.AllObserversEvent -= target.UpdateData;
       }
     }
 

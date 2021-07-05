@@ -4,12 +4,13 @@ using System.Text;
 
 namespace SeaLevelBroadcast.BusinessLogic {
   class CLIMenuInput {
-    internal int userInput;
-    string strInput;
+    private int _userInput;
+    private string _strInput;
+    internal int UserInput { get { return _userInput; } }
     internal CLIMenuInput() {
       Console.WriteLine("Menu: 1) Continue 2) Broadcast Update 3) Add Observer 4) Delete Observer  99) Quit");
-      strInput = Console.ReadLine();
-      userInput = int.TryParse(strInput, out userInput) ? userInput : 1;
+      _strInput = Console.ReadLine();
+      _userInput = int.TryParse(_strInput, out _userInput) ? _userInput : 1;
     }
   }
 }

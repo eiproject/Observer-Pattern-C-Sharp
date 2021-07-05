@@ -6,22 +6,22 @@ using SeaLevelBroadcast.SensorDevice;
 namespace SeaLevelBroadcast.Models {
   public class SeaLevel {
     // internal get set
-    internal int? seaDepth;
-    internal int? seaSalinity;
-    internal int? seaTemperature;
+    private int? _seaDepth;
+    private int? _seaSalinity;
+    private int? _seaTemperature;
 
     // public get only attribute
-    public int? SeaDepth{ get{return seaDepth;} }
-    public int? SeaSalinity{ get{return seaSalinity;} }
-    public int? SeaTemperature{ get{return seaTemperature;} }
+    public int? SeaDepth{ get{return _seaDepth;} }
+    public int? SeaSalinity{ get{return _seaSalinity;} }
+    public int? SeaTemperature{ get{return _seaTemperature;} }
 
     internal SeaLevel() {
     }
 
     internal void updateDataFromSensor(SensorData sensor) {
-      seaDepth = sensor.depthSensor;
-      seaSalinity = sensor.salinitySensor;
-      seaTemperature = sensor.tempSensor;
+      _seaDepth = sensor.depthSensor;
+      _seaSalinity = sensor.salinitySensor;
+      _seaTemperature = sensor.tempSensor;
     }
   }
 }

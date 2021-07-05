@@ -22,7 +22,7 @@ namespace SeaLevelBroadcast.Models {
     public List<IObserver> AllObservers { get { return _allObservers; } }
 
     // internal method
-    internal int? NumSubscriber {
+    internal int? NumOfSubscriber {
       get {
         return _allObserversEvent?.GetInvocationList().Length;
       }
